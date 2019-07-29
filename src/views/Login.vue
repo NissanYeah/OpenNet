@@ -2,17 +2,14 @@
   <div>
     <h1>Sign In</h1>
     <div>
-      Account:
-        <input type="text" v-model="login.loginName">
+      Account:<input type="text" v-model="login.loginName">
     </div>
     <div>
-      Password:
-        <input type="password" v-model="login.password">
+      Password:<input type="password" v-model="login.password">
     </div>
     <div>
        <button @click="handleClick"> Sign In </button>
     </div>
-
   </div>
 </template>
 

@@ -2,7 +2,7 @@
   <div>
     <button @click="handleClick">Filter</button>
     <div v-if="!isFilter">
-      <h1>User Data</h1>
+      <h1>All Data</h1>
       <div v-for="(item, index) in userData" :key=index>
         {{ item.age }}
         {{ item.firstName }}

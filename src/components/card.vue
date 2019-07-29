@@ -1,15 +1,19 @@
 <template>
   <div>
     <button @click="handleClick">Filter</button>
-    <div v-show="!isFilter" v-for="(item, index) in data" :key=index>
-      {{ item.age }}
-      {{ item.firstName }}
-      {{ item.lastName }}
+    <div v-if="!isFilter">
+      <div v-for="(item, index) in data" :key=index>
+        {{ item.age }}
+        {{ item.firstName }}
+        {{ item.lastName }}
+      </div>
     </div>
-    <div v-show="isFilter" v-for="(item, index) in filterData" :key=index>
+    <div v-else>
+      <div v-for="(item, index) in filterData" :key=index>
       {{ item.age }}
       {{ item.firstName }}
       {{ item.lastName }}
+      </div>
     </div>
   </div>
 </template>
@@ -44,7 +48,8 @@ export default class Userlist extends Vue {
   }
 
   async mounted() {
-    axios.defaults.headers.common.Authorization = localStorage.token
+    const { $store: { dispatch } } = this;
+    await dispatch('tokenSet');
     const response = await axios.get('http://opn.mobiusloop.cc/api/users')
     const { data } = response
     this.data = data

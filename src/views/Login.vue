@@ -36,7 +36,7 @@ export default class Login extends Vue {
       .then((response) => {
         const { data: { token } } = response
         if(token){
-          localStorage.token = "Bearer "+ token;
+          sessionStorage.token = "Bearer "+ token;
           router.push('/userList');
         }
       })

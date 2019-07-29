@@ -2,13 +2,15 @@
   <div>
     <button @click="handleClick">Filter</button>
     <div v-if="!isFilter">
-      <div v-for="(item, index) in data" :key=index>
+      <h1>User Data</h1>
+      <div v-for="(item, index) in userData" :key=index>
         {{ item.age }}
         {{ item.firstName }}
         {{ item.lastName }}
       </div>
     </div>
     <div v-else>
+      <h1>filter Data</h1>
       <div v-for="(item, index) in filterData" :key=index>
       {{ item.age }}
       {{ item.firstName }}
@@ -22,13 +24,10 @@
 import { Component, Vue } from 'vue-property-decorator';
 import axios from 'axios';
 
-@Component({
-  components: {
-  },
-})
+@Component
 export default class Userlist extends Vue {
   
-  data = []
+  userData = []
 
   filterData = []
 
@@ -39,7 +38,7 @@ export default class Userlist extends Vue {
   }
 
   filter() {
-    this.data.forEach((person) => {
+    this.userData.forEach((person) => {
       const nameLength = person.firstName + ' ' + person.lastName;
       if(person.age >= 20 && person.age < 30 && nameLength.length >= 10 ){
         this.filterData.push(person);
@@ -52,7 +51,7 @@ export default class Userlist extends Vue {
     await dispatch('tokenSet');
     const response = await axios.get('http://opn.mobiusloop.cc/api/users')
     const { data } = response
-    this.data = data
+    this.userData = data
     this.filter()
   }
 }

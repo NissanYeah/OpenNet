@@ -2,7 +2,7 @@ import Vue from 'vue';
 import Router from 'vue-router';
 import Login from './views/Login.vue';
 import index from './views/UserList/index.vue';
-import Card from './components/card.vue';
+import UserCard from './components/card.vue';
 
 Vue.use(Router);
 
@@ -16,13 +16,13 @@ export default new Router({
       component: Login,
     },
     {
-      path: '/userList',
-      name: 'userList',
+      path: '/UsersList',
+      name: 'UsersList',
       component: index,
       children: [
         {
           path: '/',
-          component: Card
+          component: UserCard
         }
       ]
     },

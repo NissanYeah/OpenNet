@@ -1,10 +1,18 @@
 <template>
   <div>
-    Account: <input type="text" v-model="login.loginName">
-    <br>
-    password: <input type="password" v-model="login.password">
-    <br>
-    <button @click="handleClick">Login In</button>
+    <h1>Sign In</h1>
+    <div>
+      Account:
+        <input type="text" v-model="login.loginName">
+    </div>
+    <div>
+      Password:
+        <input type="password" v-model="login.password">
+    </div>
+    <div>
+       <button @click="handleClick"> Sign In </button>
+    </div>
+
   </div>
 </template>
 
@@ -13,10 +21,7 @@ import { Component, Vue } from 'vue-property-decorator';
 import axios from 'axios';
 import router from '@/router';
 
-@Component({
-  components: {
-  },
-})
+@Component
 export default class Login extends Vue {
 
   private login = {
@@ -37,7 +42,7 @@ export default class Login extends Vue {
         const { data: { token } } = response
         if(token){
           sessionStorage.token = "Bearer "+ token;
-          router.push('/userList');
+          router.push('/UsersList');
         }
       })
   }

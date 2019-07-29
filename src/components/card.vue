@@ -25,7 +25,7 @@ import { Component, Vue } from 'vue-property-decorator';
 import axios from 'axios';
 
 @Component
-export default class Userlist extends Vue {
+export default class UserCard extends Vue {
   
   userData = []
 
@@ -47,8 +47,6 @@ export default class Userlist extends Vue {
   }
 
   async mounted() {
-    const { $store: { dispatch } } = this;
-    await dispatch('tokenSet');
     const response = await axios.get('http://opn.mobiusloop.cc/api/users')
     const { data } = response
     this.userData = data

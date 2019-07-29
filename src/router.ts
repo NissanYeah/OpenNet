@@ -19,12 +19,12 @@ export default new Router({
       path: '/UsersList',
       name: 'UsersList',
       component: index,
-      children: [
-        {
-          path: '/',
-          component: UserCard
-        }
-      ]
+      // children: [
+      //   {
+      //     path: '/',
+      //     component: UserCard
+      //   }
+      // ]
     },
   ],
 });
